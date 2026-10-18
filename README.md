@@ -1,5 +1,10 @@
 # MedicApp
 
+## Integrantes
+
+María Del Mar Murillo Chaves
+Nailea Soto Gonzalez
+
 ## Descripción
 
 El objetivo consiste en facilitar la organización y el seguimiento de medicamentos y permitir registrar medicamentos, configurar horarios, llevar un historial de tomas y recibir recordatorios.
