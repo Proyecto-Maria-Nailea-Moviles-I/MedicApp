@@ -3,7 +3,7 @@
 ## Integrantes
 
 María Del Mar Murillo Chaves
-Nailea Soto Gonzalez
+Yudel Nailea Soto González
 
 ## Descripción
 
@@ -11,6 +11,7 @@ El objetivo consiste en facilitar la organización y el seguimiento de medicamen
 #También contará con fotografías para identificar los medicamentos y un mapa para localizar farmacias cercanas.
 
 ## Mockups de la aplicación 
+
 ## Pantalla de inicio
 
 Muestra un resumen de los medicamentos registrados, las próximas tomas programadas y los horarios correspondientes.
