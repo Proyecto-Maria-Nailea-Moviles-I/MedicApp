@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MedicApp</string>
     <string name="welcome_message">Welcome to MedicApp</string>
@@ -68,4 +69,32 @@
     <string name="msg_action_pending">Feature pending implementation</string>
     <string name="msg_empty_list">No records available</string>
     <string name="msg_required_field">This field is required</string>
+    <string name="home_greeting">Welcome, user</string>
+    <string name="home_subtitle">Your daily summary</string>
+    <string name="home_next_dose">Next dose</string>
+    <string name="home_no_next_dose">No scheduled doses</string>
+    <string name="home_my_medications">My medications</string>
+    <string name="home_no_medications">No medications registered</string>
+    <string name="home_add_medication">Add medication</string>
+    <string name="home_nav_home">Home</string>
+    <string name="home_nav_medications">Medications</string>
+    <string name="home_nav_map">Map</string>
+    <string name="home_nav_history">History</string>
+    <string name="home_profile">User profile</string>
+    <string name="new_medication_title">New Medication</string>
+    <string name="medication_back">Back</string>
+    <string name="medication_calendar">Select end date</string>
+    <string name="medication_select_date">Select a date</string>
+    <string name="pharmacies_title">Nearby Pharmacies</string>
+    <string name="pharmacy_search_hint">Search pharmacy by name</string>
+    <string name="pharmacy_search_description">Search pharmacy</string>
+    <string name="pharmacy_empty">No pharmacies to display</string>
+    <string name="pharmacy_directions">Directions</string>
+    <string name="pharmacy_details">View details</string>
+    <string name="pharmacy_enter_name">Enter the pharmacy name</string>
+    <string name="history_title">Intake History</string>
+    <string name="history_calendar">Select date</string>
+    <string name="history_all_dates">All dates</string>
+    <string name="history_empty">No medication intakes recorded</string>
+    <string name="history_pending">Pending</string>
 </resources>

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_background"
+    tools:context=".MedicationActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_Medication"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:background="@color/home_blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack_Medication"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/medication_back"
+            app:srcCompat="@drawable/icon_back"
+            app:tint="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle_Medication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/new_medication_title"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/btnBack_Medication"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrollMedication"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/header_Medication"
+        app:layout_constraintBottom_toTopOf="@+id/tableNavigation_Medication"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableLayout
+            android:id="@+id/tableMedication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:padding="12dp"
+            android:background="@android:color/white"
+            android:stretchColumns="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblMedicationName" />
+
+                <EditText
+                    android:id="@+id/txtName_Medication"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblDosage" />
+
+                <EditText
+                    android:id="@+id/txtDosage_Medication"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblPresentation" />
+
+                <EditText
+                    android:id="@+id/txtPresentation_Medication"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblFrequency" />
+
+                <EditText
+                    android:id="@+id/txtFrequency_Medication"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblSchedules" />
+
+                <EditText
+                    android:id="@+id/txtSchedules_Medication"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblQuantity" />
+
+                <EditText
+                    android:id="@+id/txtQuantity_Medication"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblEndDate" />
+
+                <TextView
+                    android:id="@+id/tvEndDate_Medication"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="48dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/medication_select_date" />
+
+                <ImageButton
+                    android:id="@+id/btnEndDate_Medication"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/medication_calendar"
+                    app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnSave_Medication"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/btnSave_Medication"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="@color/home_blue" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
+
+    <TableLayout
+        android:id="@+id/tableNavigation_Medication"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnHome_Medication"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_home"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_home"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnMedicationList_Medication"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_medications"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_medication"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnPharmacy_Medication"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_map"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_map"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnHistory_Medication"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_history"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_history"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
