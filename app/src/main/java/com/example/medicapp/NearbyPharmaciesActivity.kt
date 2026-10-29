@@ -69,5 +69,12 @@ class NearbyPharmaciesActivity : AppCompatActivity() {
             val intent = Intent(this, IntakeHistoryActivity::class.java)
             startActivity(intent)
         }
+
+        val btnMedicationList = findViewById<Button>(R.id.btnMedicationList_Pharmacy)
+
+        btnMedicationList.setOnClickListener {
+            val intent = Intent(this, MedicationListActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

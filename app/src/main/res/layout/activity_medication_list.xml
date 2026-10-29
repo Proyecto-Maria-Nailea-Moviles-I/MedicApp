@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_background"
+    tools:context=".MedicationListActivity">
+
+    <!-- Header Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_List"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:background="@color/home_blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack_List"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/medication_back"
+            app:srcCompat="@drawable/icon_back"
+            app:tint="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle_List"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/medication_list_title"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/btnBack_List"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Search and Filter Bar -->
+    <LinearLayout
+        android:id="@+id/searchContainer_List"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/header_List"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/txtSearch_List"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:hint="@string/medication_search_hint"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/home_text"
+            android:textColorHint="@color/home_gray"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/btnFilter_List"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/white"
+            android:contentDescription="@string/btn_filter"
+            app:srcCompat="@drawable/icon_filter"
+            app:tint="@color/home_blue" />
+
+    </LinearLayout>
+
+    <!-- Status Filter Buttons -->
+    <LinearLayout
+        android:id="@+id/statusFilterContainer_List"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/searchContainer_List"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnFilterAll_List"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@color/home_blue"
+            android:text="@string/filter_all"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnFilterActive_List"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@android:color/white"
+            android:text="@string/filter_active"
+            android:textAllCaps="false"
+            android:textColor="@color/home_blue"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnFilterCompleted_List"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:backgroundTint="@android:color/white"
+            android:text="@string/filter_completed"
+            android:textAllCaps="false"
+            android:textColor="@color/home_blue"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <!-- Medications Scroll Area -->
+    <ScrollView
+        android:id="@+id/scrollList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/statusFilterContainer_List"
+        app:layout_constraintBottom_toTopOf="@+id/tableNavigation_List"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/containerMedications_List"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvEmpty_List"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="@string/home_no_medications"
+                android:textColor="@color/home_gray"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Floating Add Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAdd_List"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/home_add_medication"
+        app:srcCompat="@drawable/icon_add"
+        app:tint="@android:color/white"
+        app:backgroundTint="@color/home_blue"
+        app:layout_constraintBottom_toTopOf="@+id/tableNavigation_List"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Bottom Navigation Bar -->
+    <TableLayout
+        android:id="@+id/tableNavigation_List"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnHome_List"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_home"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_home"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnMedicationList_List"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_medications"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_medication"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnPharmacy_List"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_map"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_map"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnHistory_List"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_history"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_history"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

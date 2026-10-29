@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_background"
+    tools:context=".MedicationDetailActivity">
+
+    <!-- Header Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_Detail"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:background="@color/home_blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack_Detail"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/medication_back"
+            app:srcCompat="@drawable/icon_back"
+            app:tint="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle_Detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/detail_title"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/btnBack_Detail"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Detail Scroll Area -->
+    <ScrollView
+        android:id="@+id/scrollDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/header_Detail"
+        app:layout_constraintBottom_toTopOf="@+id/tableNavigation_Detail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Image Area / Placeholder -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@android:color/white"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/imgMedication_Detail"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/lblMedicationImage"
+                    app:srcCompat="@drawable/icon_pill"
+                    app:tint="@color/home_blue" />
+
+            </FrameLayout>
+
+            <!-- Medication Details Table -->
+            <TableLayout
+                android:id="@+id/tableDetail_Medication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:padding="16dp"
+                android:stretchColumns="1">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lblMedicationName"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvName_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lblDosage" />
+
+                    <TextView
+                        android:id="@+id/tvDosage_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lblPresentation" />
+
+                    <TextView
+                        android:id="@+id/tvPresentation_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lblFrequency" />
+
+                    <TextView
+                        android:id="@+id/tvFrequency_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lblSchedules" />
+
+                    <TextView
+                        android:id="@+id/tvSchedules_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lbl_next_intake" />
+
+                    <TextView
+                        android:id="@+id/tvNextIntake_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lblQuantity" />
+
+                    <TextView
+                        android:id="@+id/tvQuantity_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lblEndDate" />
+
+                    <TextView
+                        android:id="@+id/tvEndDate_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lblStatus" />
+
+                    <TextView
+                        android:id="@+id/tvStatus_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lblNotes" />
+
+                    <TextView
+                        android:id="@+id/tvNotes_Detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/home_text" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <!-- Action Buttons -->
+            <Button
+                android:id="@+id/btnTake_Detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/home_blue"
+                android:text="@string/btn_take_medication"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:icon="@drawable/icon_check"
+                app:iconGravity="textStart"
+                app:iconTint="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnEdit_Detail"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@android:color/white"
+                android:text="@string/btn_edit_medication"
+                android:textAllCaps="false"
+                android:textColor="@color/home_blue"
+                app:icon="@drawable/icon_edit"
+                app:iconGravity="textStart"
+                app:iconTint="@color/home_blue" />
+
+            <Button
+                android:id="@+id/btnDelete_Detail"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@android:color/white"
+                android:text="@string/btn_delete_medication"
+                android:textAllCaps="false"
+                android:textColor="#D32F2F"
+                app:icon="@drawable/icon_delete"
+                app:iconGravity="textStart"
+                app:iconTint="#D32F2F" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <TableLayout
+        android:id="@+id/tableNavigation_Detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnHome_Detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_home"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_home"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnMedicationList_Detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_medications"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_medication"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnPharmacy_Detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_map"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_map"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnHistory_Detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_history"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_history"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

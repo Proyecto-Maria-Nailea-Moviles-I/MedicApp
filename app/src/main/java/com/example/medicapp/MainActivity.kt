@@ -35,6 +35,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val btnMedicationList = findViewById<Button>(R.id.btnMedicationList_Main)
+
+        btnMedicationList.setOnClickListener {
+            val intent = Intent(this, MedicationListActivity::class.java)
+            startActivity(intent)
+        }
+
         val btnPharmacy = findViewById<Button>(R.id.btnPharmacy_Main)
 
         btnPharmacy.setOnClickListener {
