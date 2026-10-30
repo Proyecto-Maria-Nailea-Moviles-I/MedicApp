@@ -159,6 +159,14 @@ class MedicationActivity : AppCompatActivity() {
             val intent = Intent(this, NearbyPharmaciesActivity::class.java)
             startActivity(intent)
         }
+
+        val btnMedicationList = findViewById<Button>(R.id.btnMedicationList_Medication)
+
+        btnMedicationList.setOnClickListener {
+            val intent = Intent(this, MedicationListActivity::class.java)
+            startActivity(intent)
+        }
+
         val btnHistory = findViewById<Button>(R.id.btnHistory_Medication)
 
         btnHistory.setOnClickListener {

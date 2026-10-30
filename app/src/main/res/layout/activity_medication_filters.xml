@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_background"
+    tools:context=".MedicationFiltersActivity">
+
+    <!-- Header Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_Filters"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:background="@color/home_blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack_Filters"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/medication_back"
+            app:srcCompat="@drawable/icon_back"
+            app:tint="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle_Filters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/filters_title"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/btnBack_Filters"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Filters Scroll Area -->
+    <ScrollView
+        android:id="@+id/scrollFilters"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/header_Filters"
+        app:layout_constraintBottom_toTopOf="@+id/tableNavigation_Filters"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Estado / Status -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_filter_status"
+                android:textColor="@color/home_blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgStatus_Filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@android:color/white"
+                android:padding="12dp">
+
+                <RadioButton
+                    android:id="@+id/rbStatusAll_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/filter_time_all" />
+
+                <RadioButton
+                    android:id="@+id/rbStatusActive_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_active" />
+
+                <RadioButton
+                    android:id="@+id/rbStatusCompleted_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_completed" />
+
+            </RadioGroup>
+
+            <!-- Horario / Schedule -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_filter_time"
+                android:textColor="@color/home_blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgTime_Filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@android:color/white"
+                android:padding="12dp">
+
+                <RadioButton
+                    android:id="@+id/rbTimeAll_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/filter_time_all" />
+
+                <RadioButton
+                    android:id="@+id/rbTimeMorning_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_time_morning" />
+
+                <RadioButton
+                    android:id="@+id/rbTimeAfternoon_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_time_afternoon" />
+
+                <RadioButton
+                    android:id="@+id/rbTimeNight_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_time_night" />
+
+            </RadioGroup>
+
+            <!-- Frecuencia / Frequency -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_filter_frequency"
+                android:textColor="@color/home_blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgFrequency_Filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@android:color/white"
+                android:padding="12dp">
+
+                <RadioButton
+                    android:id="@+id/rbFreqAll_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/filter_freq_all" />
+
+                <RadioButton
+                    android:id="@+id/rbFreq8_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_freq_8" />
+
+                <RadioButton
+                    android:id="@+id/rbFreq12_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_freq_12" />
+
+                <RadioButton
+                    android:id="@+id/rbFreq24_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_freq_24" />
+
+                <RadioButton
+                    android:id="@+id/rbFreqOther_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_freq_other" />
+
+            </RadioGroup>
+
+            <!-- Orden / Order -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_filter_order"
+                android:textColor="@color/home_blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgOrder_Filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/white"
+                android:padding="12dp">
+
+                <RadioButton
+                    android:id="@+id/rbOrderName_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/filter_order_name" />
+
+                <RadioButton
+                    android:id="@+id/rbOrderNext_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_order_next" />
+
+                <RadioButton
+                    android:id="@+id/rbOrderRecent_Filters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_order_recent" />
+
+            </RadioGroup>
+
+            <!-- Buttons: Apply & Clear -->
+            <Button
+                android:id="@+id/btnApply_Filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/home_blue"
+                android:text="@string/btn_apply_filters"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnClear_Filters"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@android:color/white"
+                android:text="@string/btn_clear_filters"
+                android:textAllCaps="false"
+                android:textColor="@color/home_blue" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <TableLayout
+        android:id="@+id/tableNavigation_Filters"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnHome_Filters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_home"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_home"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnMedicationList_Filters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_medications"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_medication"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnPharmacy_Filters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_map"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_map"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnHistory_Filters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minWidth="0dp"
+                android:minHeight="70dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/home_nav_history"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:textColor="@color/home_blue"
+                android:backgroundTint="@android:color/white"
+                android:drawableTop="@drawable/icon_history"
+                android:drawableTint="@color/home_blue"
+                android:drawablePadding="4dp"
+                android:gravity="center" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

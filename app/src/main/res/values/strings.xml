@@ -97,4 +97,51 @@
     <string name="history_all_dates">Todas las fechas</string>
     <string name="history_empty">No hay tomas registradas</string>
     <string name="history_pending">Pendiente</string>
+
+    <!-- Medication List Strings -->
+    <string name="medication_list_title">Medicamentos</string>
+    <string name="medication_search_hint">Buscar medicamento&#8230;</string>
+    <string name="filter_all">Todos</string>
+    <string name="filter_active">Activos</string>
+    <string name="filter_completed">Finalizados</string>
+    <string name="btn_add_medication">Agregar</string>
+    <string name="btn_filter">Filtros</string>
+
+    <!-- Medication Filters Strings -->
+    <string name="filters_title">Filtros</string>
+    <string name="lbl_filter_status">Estado</string>
+    <string name="lbl_filter_time">Horario</string>
+    <string name="lbl_filter_frequency">Frecuencia</string>
+    <string name="lbl_filter_order">Orden</string>
+    <string name="filter_time_all">Todos</string>
+    <string name="filter_time_morning">Mañana</string>
+    <string name="filter_time_afternoon">Tarde</string>
+    <string name="filter_time_night">Noche</string>
+    <string name="filter_freq_all">Todas</string>
+    <string name="filter_freq_8">8 horas</string>
+    <string name="filter_freq_12">12 horas</string>
+    <string name="filter_freq_24">24 horas</string>
+    <string name="filter_freq_other">Otro</string>
+    <string name="filter_order_name">Nombre</string>
+    <string name="filter_order_next">Próxima toma</string>
+    <string name="filter_order_recent">Más recientes</string>
+    <string name="btn_apply_filters">Aplicar</string>
+    <string name="btn_clear_filters">Limpiar filtros</string>
+    <string name="msg_filters_applied">Filtros aplicados</string>
+    <string name="msg_filters_cleared">Filtros limpiados</string>
+
+    <!-- Medication Detail Strings -->
+    <string name="detail_title">Detalle</string>
+    <string name="lbl_next_intake">Próxima toma</string>
+    <string name="btn_take_medication">Marcar como tomada</string>
+    <string name="btn_edit_medication">Editar</string>
+    <string name="btn_delete_medication">Eliminar</string>
+    <string name="dialog_delete_title">¿Eliminar medicamento?</string>
+    <string name="dialog_delete_subtitle">Esta acción no se puede deshacer.</string>
+    <string name="dialog_delete_message">¿Está seguro de que desea eliminar este medicamento?</string>
+    <string name="dialog_take_title">¡Toma registrada!</string>
+    <string name="dialog_take_subtitle">Has marcado tu medicamento como tomado.</string>
+    <string name="dialog_take_message">¿Desea registrar la toma de este medicamento?</string>
+    <string name="btnAccept">Aceptar</string>
+    <string name="msg_intake_recorded">Toma registrada correctamente</string>
 </resources>

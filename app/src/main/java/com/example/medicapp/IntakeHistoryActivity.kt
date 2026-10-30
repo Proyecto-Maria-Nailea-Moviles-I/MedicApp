@@ -83,11 +83,8 @@ class IntakeHistoryActivity : AppCompatActivity() {
         }
 
         btnMedicationList.setOnClickListener {
-            Toast.makeText(
-                this,
-                R.string.msg_action_pending,
-                Toast.LENGTH_SHORT
-            ).show()
+            val intent = Intent(this, MedicationListActivity::class.java)
+            startActivity(intent)
         }
     }
 }
