@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MedicApp</string>
     <string name="welcome_message">Bienvenido a MedicApp</string>
@@ -68,4 +69,32 @@
     <string name="msg_action_pending">Funcionalidad pendiente de implementar</string>
     <string name="msg_empty_list">No hay registros disponibles</string>
     <string name="msg_required_field">Este campo es obligatorio</string>
+    <string name="home_greeting">Bienvenido, usuario</string>
+    <string name="home_subtitle">Tu resumen de hoy</string>
+    <string name="home_next_dose">Próxima toma</string>
+    <string name="home_no_next_dose">No tienes tomas programadas</string>
+    <string name="home_my_medications">Mis medicamentos</string>
+    <string name="home_no_medications">No hay medicamentos registrados</string>
+    <string name="home_add_medication">Agregar medicamento</string>
+    <string name="home_nav_home">Inicio</string>
+    <string name="home_nav_medications">Medicamentos</string>
+    <string name="home_nav_map">Mapa</string>
+    <string name="home_nav_history">Historial</string>
+    <string name="home_profile">Perfil de usuario</string>
+    <string name="new_medication_title">Nuevo medicamento</string>
+    <string name="medication_back">Volver</string>
+    <string name="medication_calendar">Seleccionar fecha de finalización</string>
+    <string name="medication_select_date">Seleccione una fecha</string>
+    <string name="pharmacies_title">Farmacias cercanas</string>
+    <string name="pharmacy_search_hint">Buscar farmacia por nombre</string>
+    <string name="pharmacy_search_description">Buscar farmacia</string>
+    <string name="pharmacy_empty">No hay farmacias para mostrar</string>
+    <string name="pharmacy_directions">Cómo llegar</string>
+    <string name="pharmacy_details">Ver detalles</string>
+    <string name="pharmacy_enter_name">Ingrese el nombre de la farmacia</string>
+    <string name="history_title">Historial de tomas</string>
+    <string name="history_calendar">Seleccionar fecha</string>
+    <string name="history_all_dates">Todas las fechas</string>
+    <string name="history_empty">No hay tomas registradas</string>
+    <string name="history_pending">Pendiente</string>
 </resources>

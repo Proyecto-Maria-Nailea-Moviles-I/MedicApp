@@ -32,3 +32,5 @@ class MemoryDataRepository : IMedicationRepository {
         return if (result.any()) result[0] else null
     }
 }
+
+val sharedMedicationRepository = MemoryDataRepository()
