@@ -2,32 +2,33 @@ package com.example.medicapp
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.TypedValue
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.medicapp.data.memory.sharedMedicationRepository
 import com.example.medicapp.domain.model.Medication
 import com.example.medicapp.domain.model.MedicationStatus
+import com.example.medicapp.util.util
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MedicationListActivity : AppCompatActivity() {
+class MedicationListActivity : AppCompatActivity(), OnItemClickListener {
 
     private enum class FilterStatus { ALL, ACTIVE, COMPLETED }
 
     private var currentFilterStatus = FilterStatus.ALL
     private var searchQuery = ""
 
-    private lateinit var containerMedications: LinearLayout
+    private lateinit var rvMedication: RecyclerView
+    private lateinit var medicationAdapter: MedicationListAdapter
     private lateinit var tvEmpty: TextView
     private lateinit var txtSearch: EditText
     private lateinit var btnFilterAll: Button
@@ -38,13 +39,18 @@ class MedicationListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medication_list)
 
-        containerMedications = findViewById(R.id.containerMedications_List)
+        rvMedication = findViewById(R.id.rvMedication_List)
         tvEmpty = findViewById(R.id.tvEmpty_List)
         txtSearch = findViewById(R.id.txtSearch_List)
 
         btnFilterAll = findViewById(R.id.btnFilterAll_List)
         btnFilterActive = findViewById(R.id.btnFilterActive_List)
         btnFilterCompleted = findViewById(R.id.btnFilterCompleted_List)
+
+        medicationAdapter = MedicationListAdapter(emptyList(), this)
+        val layoutManager = LinearLayoutManager(applicationContext)
+        rvMedication.layoutManager = layoutManager
+        rvMedication.adapter = medicationAdapter
 
         val btnBack = findViewById<ImageButton>(R.id.btnBack_List)
         val btnFilter = findViewById<ImageButton>(R.id.btnFilter_List)
@@ -122,6 +128,15 @@ class MedicationListActivity : AppCompatActivity() {
         displayMedications()
     }
 
+    override fun onItemClick(medication: Medication) {
+        util.openActivity(
+            this,
+            MedicationDetailActivity::class.java,
+            "medication_id",
+            medication.id
+        )
+    }
+
     private fun updateFilterButtonStyles() {
         val blueColor = ContextCompat.getColor(this, R.color.home_blue)
         val whiteColor = Color.WHITE
@@ -137,8 +152,6 @@ class MedicationListActivity : AppCompatActivity() {
     }
 
     private fun displayMedications() {
-        containerMedications.removeAllViews()
-
         var list = sharedMedicationRepository.getMedications()
 
         if (searchQuery.isNotEmpty()) {
@@ -153,69 +166,11 @@ class MedicationListActivity : AppCompatActivity() {
 
         if (list.isEmpty()) {
             tvEmpty.visibility = View.VISIBLE
-            containerMedications.addView(tvEmpty)
+            rvMedication.visibility = View.GONE
         } else {
             tvEmpty.visibility = View.GONE
-
-            for (medication in list) {
-                val cardView = createMedicationCard(medication)
-                containerMedications.addView(cardView)
-            }
+            rvMedication.visibility = View.VISIBLE
+            medicationAdapter.updateList(list)
         }
-    }
-
-    private fun createMedicationCard(medication: Medication): View {
-        val card = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            setBackgroundColor(Color.WHITE)
-            val padding = TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 14f, resources.displayMetrics
-            ).toInt()
-            setPadding(padding, padding, padding, padding)
-
-            val params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                bottomMargin = TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP, 12f, resources.displayMetrics
-                ).toInt()
-            }
-            layoutParams = params
-            elevation = TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 2f, resources.displayMetrics
-            )
-        }
-
-        val tvName = TextView(this).apply {
-            text = medication.name
-            textSize = 16f
-            setTypeface(null, Typeface.BOLD)
-            setTextColor(ContextCompat.getColor(context, R.color.home_text))
-        }
-
-        val tvDosagePresentation = TextView(this).apply {
-            text = "${medication.dosage} - ${medication.presentation}"
-            textSize = 14f
-            setTextColor(ContextCompat.getColor(context, R.color.home_gray))
-        }
-
-        val tvFrequency = TextView(this).apply {
-            text = getString(R.string.lblFrequency) + ": " + medication.frequency.name
-            textSize = 12f
-            setTextColor(ContextCompat.getColor(context, R.color.home_blue))
-        }
-
-        card.addView(tvName)
-        card.addView(tvDosagePresentation)
-        card.addView(tvFrequency)
-
-        card.setOnClickListener {
-            val intent = Intent(this, MedicationDetailActivity::class.java)
-            intent.putExtra("medication_id", medication.id)
-            startActivity(intent)
-        }
-
-        return card
     }
 }

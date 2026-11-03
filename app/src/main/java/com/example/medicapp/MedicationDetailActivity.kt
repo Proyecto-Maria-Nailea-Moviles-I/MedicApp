@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.medicapp.data.memory.sharedMedicationRepository
 import com.example.medicapp.domain.model.Medication
+import com.example.medicapp.util.util
 
 class MedicationDetailActivity : AppCompatActivity() {
 
@@ -78,7 +79,10 @@ class MedicationDetailActivity : AppCompatActivity() {
         }
 
         btnEdit.setOnClickListener {
-            Toast.makeText(this, R.string.msg_action_pending, Toast.LENGTH_SHORT).show()
+            val med = currentMedication
+            if (med != null) {
+                util.openActivity(this, MedicationActivity::class.java, "medication_id", med.id)
+            }
         }
 
         btnDelete.setOnClickListener {

@@ -1,8 +1,25 @@
 package com.example.medicapp.util
 
+import android.content.Context
+import android.content.Intent
+
 class util {
 
     companion object {
+
+        fun openActivity(
+            context: Context,
+            objClass: Class<*>,
+            extraName: String = "",
+            value: String? = null
+        ) {
+            val intent = Intent(context, objClass).apply {
+                if (extraName.isNotBlank() && value != null) {
+                    putExtra(extraName, value)
+                }
+            }
+            context.startActivity(intent)
+        }
 
         fun isNameValid(name: String): Boolean {
             return name.trim().isNotEmpty()
