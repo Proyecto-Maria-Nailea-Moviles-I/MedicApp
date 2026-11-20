@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.medicapp.data.memory.sharedMedicationRepository
 import com.example.medicapp.domain.model.Medication
+import com.example.medicapp.util.util
 
 class MedicationDetailActivity : AppCompatActivity() {
 
@@ -78,7 +79,16 @@ class MedicationDetailActivity : AppCompatActivity() {
         }
 
         btnEdit.setOnClickListener {
-            Toast.makeText(this, R.string.msg_action_pending, Toast.LENGTH_SHORT).show()
+            val med = currentMedication
+
+            if (med != null) {
+                util.openActivity(
+                    this,
+                    MedicationActivity::class.java,
+                    "medication_id",
+                    med.id
+                )
+            }
         }
 
         btnDelete.setOnClickListener {
@@ -108,6 +118,20 @@ class MedicationDetailActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val medicationId = intent.getStringExtra("medication_id")
+
+        if (medicationId != null) {
+            currentMedication = sharedMedicationRepository.getById(medicationId)
+
+            if (currentMedication != null) {
+                populateDetails()
+            }
+        }
+    }
+
     private fun populateDetails() {
         val med = currentMedication ?: return
 
@@ -116,31 +140,56 @@ class MedicationDetailActivity : AppCompatActivity() {
         tvPresentation.text = med.presentation
         tvFrequency.text = med.frequency.name
         tvSchedules.text = med.schedules.joinToString(", ")
-        tvNextIntake.text = if (med.schedules.isNotEmpty()) med.schedules[0] else "-"
+
+        tvNextIntake.text =
+            if (med.schedules.isNotEmpty()) med.schedules[0] else "-"
+
         tvQuantity.text = med.quantity.toString()
         tvEndDate.text = med.endDate.toString()
         tvStatus.text = med.status.name
-        tvNotes.text = if (med.notes.isNotEmpty()) med.notes else "-"
+
+        tvNotes.text =
+            if (med.notes.isNotEmpty()) med.notes else "-"
     }
 
     private fun showTakeConfirmationDialog() {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_take_medication, null)
+        val dialogView = layoutInflater.inflate(
+            R.layout.dialog_take_medication,
+            null
+        )
+
         val dialog = AlertDialog.Builder(this)
             .setView(dialogView)
             .create()
 
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.window?.setBackgroundDrawableResource(
+            android.R.color.transparent
+        )
 
-        val btnAccept = dialogView.findViewById<Button>(R.id.btnAccept_DialogTake)
+        val btnAccept = dialogView.findViewById<Button>(
+            R.id.btnAccept_DialogTake
+        )
+
         btnAccept.setOnClickListener {
             val med = currentMedication
+
             if (med != null && med.quantity > 0) {
-                val updated = med.copy(quantity = med.quantity - 1)
+                val updated = med.copy(
+                    quantity = med.quantity - 1
+                )
+
                 sharedMedicationRepository.updateMedication(updated)
                 currentMedication = updated
+
                 populateDetails()
             }
-            Toast.makeText(this, R.string.msg_intake_recorded, Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(
+                this,
+                R.string.msg_intake_recorded,
+                Toast.LENGTH_SHORT
+            ).show()
+
             dialog.dismiss()
         }
 
@@ -148,15 +197,26 @@ class MedicationDetailActivity : AppCompatActivity() {
     }
 
     private fun showDeleteConfirmationDialog() {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_delete_medication, null)
+        val dialogView = layoutInflater.inflate(
+            R.layout.dialog_delete_medication,
+            null
+        )
+
         val dialog = AlertDialog.Builder(this)
             .setView(dialogView)
             .create()
 
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.window?.setBackgroundDrawableResource(
+            android.R.color.transparent
+        )
 
-        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel_DialogDelete)
-        val btnConfirm = dialogView.findViewById<Button>(R.id.btnConfirm_DialogDelete)
+        val btnCancel = dialogView.findViewById<Button>(
+            R.id.btnCancel_DialogDelete
+        )
+
+        val btnConfirm = dialogView.findViewById<Button>(
+            R.id.btnConfirm_DialogDelete
+        )
 
         btnCancel.setOnClickListener {
             dialog.dismiss()
@@ -164,9 +224,16 @@ class MedicationDetailActivity : AppCompatActivity() {
 
         btnConfirm.setOnClickListener {
             val med = currentMedication
+
             if (med != null) {
                 sharedMedicationRepository.deleteMedication(med.id)
-                Toast.makeText(this, R.string.msg_delete_success, Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(
+                    this,
+                    R.string.msg_delete_success,
+                    Toast.LENGTH_SHORT
+                ).show()
+
                 dialog.dismiss()
                 finish()
             }
