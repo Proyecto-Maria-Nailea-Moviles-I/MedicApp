@@ -63,7 +63,33 @@
             android:layout_margin="12dp"
             android:padding="12dp"
             android:background="@android:color/white"
-            android:stretchColumns="1">
+            android:stretchColumns="1"
+            android:shrinkColumns="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblMedicationId" />
+
+                <EditText
+                    android:id="@+id/txtId_Medication"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+
+                <ImageButton
+                    android:id="@+id/btnSearch_Medication"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/btn_search"
+                    app:srcCompat="@android:drawable/ic_menu_search" />
+
+            </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -214,6 +240,23 @@
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:backgroundTint="@color/home_blue" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnCancel_Medication"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/btnCancel_Medication"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="@color/home_gray" />
 
             </TableRow>
 

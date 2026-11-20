@@ -57,7 +57,6 @@ class MedicationListActivity : AppCompatActivity(), OnItemClickListener {
         val btnAdd = findViewById<FloatingActionButton>(R.id.btnAdd_List)
 
         val btnHome = findViewById<Button>(R.id.btnHome_List)
-        val btnMedicationList = findViewById<Button>(R.id.btnMedicationList_List)
         val btnPharmacy = findViewById<Button>(R.id.btnPharmacy_List)
         val btnHistory = findViewById<Button>(R.id.btnHistory_List)
 
@@ -108,10 +107,6 @@ class MedicationListActivity : AppCompatActivity(), OnItemClickListener {
             finish()
         }
 
-        btnMedicationList.setOnClickListener {
-            // Already on MedicationListActivity
-        }
-
         btnPharmacy.setOnClickListener {
             val intent = Intent(this, NearbyPharmaciesActivity::class.java)
             startActivity(intent)
@@ -121,6 +116,8 @@ class MedicationListActivity : AppCompatActivity(), OnItemClickListener {
             val intent = Intent(this, IntakeHistoryActivity::class.java)
             startActivity(intent)
         }
+
+        updateFilterButtonStyles()
     }
 
     override fun onResume() {
@@ -164,13 +161,14 @@ class MedicationListActivity : AppCompatActivity(), OnItemClickListener {
             FilterStatus.ALL -> {}
         }
 
+        medicationAdapter.updateList(list)
+
         if (list.isEmpty()) {
             tvEmpty.visibility = View.VISIBLE
             rvMedication.visibility = View.GONE
         } else {
             tvEmpty.visibility = View.GONE
             rvMedication.visibility = View.VISIBLE
-            medicationAdapter.updateList(list)
         }
     }
 }
