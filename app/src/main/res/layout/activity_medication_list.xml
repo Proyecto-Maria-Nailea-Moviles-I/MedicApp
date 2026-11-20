@@ -142,38 +142,35 @@
 
     </LinearLayout>
 
-    <!-- Medications Scroll Area -->
-    <ScrollView
-        android:id="@+id/scrollList"
+    <!-- Medications RecyclerView Area -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMedication_List"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:fillViewport="true"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"
         app:layout_constraintTop_toBottomOf="@+id/statusFilterContainer_List"
         app:layout_constraintBottom_toTopOf="@+id/tableNavigation_List"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/containerMedications_List"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/tvEmpty_List"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center"
-                android:text="@string/home_no_medications"
-                android:textColor="@color/home_gray"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-    </ScrollView>
+    <TextView
+        android:id="@+id/tvEmpty_List"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/home_no_medications"
+        android:textColor="@color/home_gray"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/statusFilterContainer_List"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Floating Add Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
