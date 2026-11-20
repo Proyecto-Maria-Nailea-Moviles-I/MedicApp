@@ -12,7 +12,7 @@ import com.example.medicapp.data.memory.sharedMedicationRepository
 import com.example.medicapp.domain.model.Medication
 import com.example.medicapp.util.util
 
-class MedicationDetailActivity : AppCompatActivity() {
+class   MedicationDetailActivity : AppCompatActivity() {
 
     private var currentMedication: Medication? = null
 
